@@ -1,6 +1,6 @@
-var Book = require(./bookmodel.js);
+var Book = require('./bookmodel.js');
 
-var Shelf = require(./shelfmodel.js);
+var Shelf = require('./shelfmodel.js');
 
 var Library = function() {
   this.shelves = [];
