@@ -32,6 +32,14 @@ Library.prototype.removeShelf = function(genre) {
   }
 }
 
+Library.prototype.print = function() {
+  for (var i = 0; i < this.shelves.length; i++) {
+    console.log('Shelf ' + i.genre + ':');
+    for (var j = 0; j < i.books.length; j++) {
+      console.log(j.title + ', ' + j.author);
+    }
+  }
+}
 
 
 
