@@ -1,5 +1,4 @@
 var Book = require('./bookmodel.js');
-
 var Shelf = require('./shelfmodel.js');
 
 var Library = function() {
@@ -33,42 +32,51 @@ Library.prototype.removeShelf = function(genre) {
 }
 
 Library.prototype.print = function() {
-  for (var i = 0; i < this.shelves.length; i++) {
-    console.log('Shelf ' + i.genre + ':');
-    for (var j = 0; j < i.books.length; j++) {
-      console.log(j.title + ', ' + j.author);
+  if (this.shelves.length !== 0) {
+    for (var i = 0; i < this.shelves.length; i++) {
+      var currentShelf = this.shelves[i];
+      if (currentShelf.books.length !== 0) {
+        console.log('Shelf "' + currentShelf.genre + '":');
+        for (var j = 0; j < currentShelf.books.length; j++) {
+          var currentBook = currentShelf.books[j];
+          console.log('  ' + currentBook.title + ', ' + currentBook.author);
+        }
+      } else {
+        console.log('Shelf "' + currentShelf.genre + '": ** No books **');
+      }
     }
+  } else {
+    console.log('*** No shelves ***');
   }
 }
 
+module.exports = Library;
 
+// some test code
 
+var myLibrary = new Library;
+myLibrary.addShelf('fantasy');
+var f = myLibrary.checkShelf('fantasy');
+f.addBook('A Wizard of Earthsea', 'Ursula K. LeGuin');
+f.addBook('The Hobbit', 'J.R.R. Tolkein');
+f.addBook('Harry Potter', 'J.K. Rowling');
+myLibrary.addShelf('history');
+myLibrary.addShelf('biography');
+var b = myLibrary.checkShelf('fantasy');
+b.addBook('My Life', 'Bill Clinton');
+b.addBook('My Life', 'Golda Meir');
 
+myLibrary.print();
 
-  
+/* should output:
 
+Shelf fantasy:
+  Harry Potter, J.K. Rowling
+  The Lord of the Rings, J.R.R. Tolkein
+  The Left Hand of Darkness, Ursula K. LeGuin
+Shelf history: ** No books **
+Shelf biography:
+  My Life, Golda Meir
+  My Life, Bill Clinton
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  */
