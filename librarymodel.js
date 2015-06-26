@@ -1,4 +1,3 @@
-var Book = require('./bookmodel.js');
 var Shelf = require('./shelfmodel.js');
 
 var Library = function() {
@@ -62,7 +61,7 @@ f.addBook('The Hobbit', 'J.R.R. Tolkein');
 f.addBook('Harry Potter', 'J.K. Rowling');
 myLibrary.addShelf('history');
 myLibrary.addShelf('biography');
-var b = myLibrary.checkShelf('fantasy');
+var b = myLibrary.checkShelf('biography');
 b.addBook('My Life', 'Bill Clinton');
 b.addBook('My Life', 'Golda Meir');
 
