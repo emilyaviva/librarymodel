@@ -1,3 +1,5 @@
+var Book = require('./bookmodel.js');
+
 var Shelf = function(genre) {
   this.genre = genre;
   this.books = [];
